@@ -1,7 +1,9 @@
 package io;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.nio.charset.Charset;
+import java.nio.file.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
  * 응용문제 info.txt를 이용하여 member.csv에 데이터를 입력시켜야 합니다.
@@ -11,43 +13,9 @@ import java.util.ArrayList;
 
 public class file22 {
 	public static void main(String[] args) throws Exception{
-		String path = "D:\\webpage\\agree\\src\\main\\java\\io\\info.txt";
-		String copyPath = "D:\\webpage\\agree\\src\\main\\java\\io\\member.csv";
-		new file22_box(path, copyPath);
-	}
-}
-
-
-class file22_box{
-	
-	File f = null;
-	FileReader fr = null;
-	BufferedReader br = null;
-	FileWriter fw = null;
-	BufferedWriter bw = null;
-	
-	file22_box(String path, String copyPath) throws Exception{
-		f = new File(path);
-		try {
-			// 원본파일
-			fr = new FileReader(f);
-			br = new BufferedReader(fr);
-			
-			ArrayList<String> text = new ArrayList<String>();
-//			text = br;
-			// 복사할 파일
-			f = new File(copyPath);
-//			fw = new FileWriter(f);
-//			bw = new BufferedWriter(fw);
-			
-//			bw.flush();
-//			System.out.println(bw);
-			
-			
-		} catch (Exception e) {
-			e.getMessage();
-		} finally {
-			
-		}
+		Path path = Paths.get("./game/src/io/info.txt");
+		Path copyPath = Paths.get("./game/src/io/member.csv");
+		List<String> list = Files.lines(path).collect(Collectors.toList());
+		Files.write(copyPath, list, Charset.forName("euc-kr"));
 	}
 }
