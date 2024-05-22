@@ -1,6 +1,6 @@
 package io;
 
-import java.io.FileInputStream;
+
 import java.io.FileOutputStream;
 
 /*
@@ -22,10 +22,10 @@ public class file14 {
 			FileOutputStream f = new FileOutputStream(url);			
 			byte[] temp = mainText.getBytes();
 			f.write(temp);
-			f.flush();			
+//			f.flush();			
 			f.close();		
 		} catch (Exception e) {
-			
+			e.getMessage();
 		}
 		
 	}
