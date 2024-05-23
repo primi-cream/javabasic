@@ -19,38 +19,39 @@ import java.util.stream.Collectors;
 public class file22 {
 	public static void main(String[] args) throws Exception{
 		
-//		Files.list(Paths.get(".")).forEach(System.out::println);
+		Files.list(Paths.get(".")).forEach(System.out::println);
 		
-//		Path path = Paths.get("./game/src/io/info.txt");
-//		Path copyPath = Paths.get("./game/src/io/member.csv");
-//		List<String> list = Files.lines(path).collect(Collectors.toList());
-//		Files.write(copyPath, list, Charset.forName("euc-kr"));
+		Path path = Paths.get("./src/io/info.txt");
+		Path copyPath = Paths.get("./src/io/member.csv");
+		List<String> list = Files.lines(path).collect(Collectors.toList());
+		Files.write(copyPath, list, Charset.forName("euc-kr"));
 		
 		
-		String inputPath = ".\\game\\src\\io\\info.txt";
-        String outputPath = ".\\game\\src\\io\\member.csv";
-
-        List<String> lines = new ArrayList<>();
-
-        // 파일 읽기
-        try (BufferedReader br = new BufferedReader(new FileReader(inputPath))) {
-            String textLines;
-            while ((textLines = br.readLine()) != null) {
-                lines.add(textLines);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 파일 쓰기
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath, Charset.forName("euc-kr")))) {
-            for (String line : lines) {
-                bw.write(line);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//		String inputPath = ".\\src\\io\\info.txt";
+//        String outputPath = ".\\src\\io\\member.csv";
+//
+//        List<String> lines = new ArrayList<>();
+//
+//        // 파일 읽기
+//        try (BufferedReader br = new BufferedReader(new FileReader(inputPath))) {
+//            String textLines;
+//            while ((textLines = br.readLine()) != null) {
+//                lines.add(textLines);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        // 파일 쓰기
+//        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath, Charset.forName("euc-kr")))) {
+//            for (String line : lines) {
+//                bw.write(line);
+//                bw.newLine();
+//                bw.flush();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 		
 	}
 }

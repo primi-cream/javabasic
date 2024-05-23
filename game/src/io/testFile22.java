@@ -12,8 +12,8 @@ import java.util.List;
 public class testFile22 {
 
 	public static void main(String[] args) {
-		String inputPath = ".\\game\\src\\io\\info.txt";
-        String outputPath = ".\\game\\src\\io\\member.csv";
+		String inputPath = ".\\src\\io\\info.txt";
+        String outputPath = ".\\src\\io\\member.csv";
        
         new testFile22_box(inputPath, outputPath);
         
