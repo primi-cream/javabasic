@@ -38,7 +38,7 @@ class ftp_client{
 			this.is = new FileInputStream(url);
 			BufferedInputStream bs = new BufferedInputStream(this.is);
 			byte img[] = new byte[bs.available()];
-			
+			bs.read(img);
 			// Server로 전송
 			this.os = this.sk.getOutputStream();
 			this.os.write(img);
