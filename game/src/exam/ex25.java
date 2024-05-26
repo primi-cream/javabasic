@@ -19,11 +19,8 @@ package exam;
  * 
  */
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /*
@@ -37,20 +34,45 @@ import java.util.Scanner;
 public class ex25 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("이동할 URL을 입력하세요 : ");
-		String url = sc.nextLine();
-		savelog(url);
+		BufferedWriter writer = null;
+		String savePath = "D:\\url.txt";
 		
-		sc.close();
+		
+		try {
+			while(true) {
+				writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(savePath, true), Charset.forName("UTF-8")));
+				System.out.print("이동할 URL을 입력하세요 : ");
+				String url = sc.nextLine();
+				
+				if(url.equals("종료"))
+					break;
+				
+				savelog(writer, url);				
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			sc.close();
+		}
+		
 		
 	}
 	
-	private static void savelog(String url) {
+	private static void savelog(BufferedWriter writer, String url) {
 		try {
-			InputStream is = new FileInputStream(url);
-			BufferedReader br = new BufferedReader(null);
+			writer.append(url + "\n");
+			writer.flush();
 			
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
